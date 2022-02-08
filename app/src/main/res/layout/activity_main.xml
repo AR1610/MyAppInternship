@@ -93,9 +93,10 @@
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:id="@+id/btn_send"
                 android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
-                android:text="Login"/>
+                android:text="Send"/>
 
             <Button
                 android:layout_width="0dp"
