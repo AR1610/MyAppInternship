@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,7 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends AppCompatActivity {
 
     CircleImageView circleImageView;
-    Button btnGallery;
+    Button btnGallery,btnCamera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,19 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         circleImageView = findViewById(R.id.img_DP);
         btnGallery = findViewById(R.id.btn_gallery);
+        btnCamera = findViewById(R.id.btn_camera);
+
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(i,12);
+
+            }
+        });
+
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +55,10 @@ public class ProfileActivity extends AppCompatActivity {
         {
           Uri uri = data.getData();
           circleImageView.setImageURI(uri);
+        }
+        if (requestCode == 12){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            circleImageView.setImageBitmap(bitmap);
         }
     }
 }

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent  i = new Intent(MainActivity.this,HomeActivity.class);
                     i.putExtra("KEY_EMAIL",strEmail);
                     startActivity(i);
+                    finish();
                     // Over Explicit Intent
 
 

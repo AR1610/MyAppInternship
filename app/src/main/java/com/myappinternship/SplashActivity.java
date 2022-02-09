@@ -10,7 +10,6 @@ public class SplashActivity extends AppCompatActivity {
 
     int time = 3000;
     GifImageView gifImageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +24,5 @@ public class SplashActivity extends AppCompatActivity {
             finish();
         }
     },time);
-
     }
 }
