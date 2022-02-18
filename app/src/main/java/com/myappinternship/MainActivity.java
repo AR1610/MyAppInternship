@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         edtEmail = findViewById(R.id.edt_email);
         btnLogin = findViewById(R.id.btn_login);
         imgLogo = findViewById(R.id.img_logo);
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         tvfp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View fpView = layoutInflater.inflate(R.layout.raw_fp, null);
                 EditText edtFPEmail = fpView.findViewById(R.id.edt_email);
@@ -82,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                     // Over Explicit Intent
-
-
                 }
             }
         });

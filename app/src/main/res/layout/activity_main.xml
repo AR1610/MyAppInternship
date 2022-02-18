@@ -69,7 +69,6 @@
             android:textColorHint="#05514A"
             android:singleLine="true" />
 
-
         <TextView
             android:id="@+id/tv_fp"
             android:layout_width="wrap_content"

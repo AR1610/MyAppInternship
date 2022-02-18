@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppInternship">
         <activity
+            android:name=".NavHomeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_nav_home"
+            android:theme="@style/Theme.MyAppInternship.NoActionBar" />
+        <activity
             android:name=".AlertActivity"
             android:exported="true" />
         <activity
