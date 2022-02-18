@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppInternship">
         <activity
+            android:name=".SpinnerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DateTimeActivity"
+            android:exported="true" />
+        <activity
             android:name=".NavHomeActivity"
             android:exported="true"
             android:label="@string/title_activity_nav_home"
