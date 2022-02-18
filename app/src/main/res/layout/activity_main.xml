@@ -69,11 +69,24 @@
             android:textColorHint="#05514A"
             android:singleLine="true" />
 
+
+        <TextView
+            android:id="@+id/tv_fp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_password"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="Forgot Password?"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <android.widget.Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_password"
+            android:layout_below="@+id/tv_fp"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
