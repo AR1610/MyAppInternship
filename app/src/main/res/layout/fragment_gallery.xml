@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E1A9A5"
     android:orientation="vertical"
-    android:gravity="center">
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/text_home"
+    <GridView
+        android:id="@+id/grid_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gallery"
-        android:textSize="50sp"
-        android:textColor="@color/teal_200"
-
-        />
+        android:horizontalSpacing="20dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="20dp" />
 </LinearLayout>

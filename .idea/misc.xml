@@ -10,6 +10,7 @@
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.16085526315789472" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/drawable/side_nav_bar.xml" value="0.17357859531772576" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_alert.xml" value="0.16486486486486487" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_bottom_home.xml" value="0.16486486486486487" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_date_time.xml" value="0.15202702702702703" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_home.xml" value="0.17890625" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_login.xml" value="0.176" />
@@ -24,8 +25,10 @@
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/fragment_home.xml" value="0.12094594594594595" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/nav_header_nav_home.xml" value="0.16486486486486487" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/raw_fp.xml" value="0.16486486486486487" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/raw_grid.xml" value="0.17263513513513515" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/raw_list.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/menu/activity_main_drawer.xml" value="0.16486486486486487" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/menu/bottom_menu.xml" value="0.16486486486486487" />
       </map>
     </option>
   </component>
