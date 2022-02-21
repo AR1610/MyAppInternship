@@ -1,10 +1,13 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.myappinternship.utils.GifImageView;
+import com.myappinternship.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
     new Handler().postDelayed(new Runnable() {
         @Override
         public void run() {
-            Intent i = new Intent(SplashActivity.this,SpinnerActivity.class);
+            Intent i = new Intent(SplashActivity.this,NavHomeActivity.class);
             startActivity(i);
             finish();
         }

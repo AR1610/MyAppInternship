@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.myappinternship.R;
 
 public class AlertActivity extends AppCompatActivity {
 

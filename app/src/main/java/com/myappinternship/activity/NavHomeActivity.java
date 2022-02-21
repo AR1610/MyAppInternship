@@ -1,26 +1,23 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Menu;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.myappinternship.databinding.ActivityNavHomeBinding;
+import com.myappinternship.R;
+import com.myappinternship.fragments.GalleryFragment;
+import com.myappinternship.fragments.HomeFragment;
 
 public class NavHomeActivity extends AppCompatActivity {
 
@@ -36,25 +33,33 @@ public class NavHomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nav_view);
+        //setSupportActionBar(toolbar);
 
-        setSupportActionBar(toolbar);
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        loadDashboard();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                Fragment fragment = null;
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
                 if (id == R.id.nav_home){
-                    Toast.makeText(NavHomeActivity.this, "Home", Toast.LENGTH_SHORT).show();
+
+                    fragment = new HomeFragment();
+                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.commit();
                     toolbar.setTitle("Home");
                 } else if (id == R.id.nav_gallery){
 
-                    Toast.makeText(NavHomeActivity.this, "Gallery", Toast.LENGTH_SHORT).show();
                     toolbar.setTitle("Gallery");
+                    fragment = new GalleryFragment();
+                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.commit();
 
                 }
 
@@ -62,6 +67,16 @@ public class NavHomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+    }
+
+    private void loadDashboard() {
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        HomeFragment fragment = new HomeFragment();
+        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.commit();
+        toolbar.setTitle("Home");
 
     }
 }

@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.myappinternship.R;
 
 public class SpinnerActivity extends AppCompatActivity {
 
@@ -51,11 +53,8 @@ public class SpinnerActivity extends AppCompatActivity {
 
                     tvData.setTextColor(Color.GRAY);
                 }else {
-
                     tvData.setTextColor(Color.MAGENTA);
-
                 }
-
                 return  tvData;
             }
         };

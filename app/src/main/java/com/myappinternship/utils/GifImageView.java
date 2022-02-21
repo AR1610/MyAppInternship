@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.utils;
 
 import android.content.Context;
 import android.graphics.Canvas;

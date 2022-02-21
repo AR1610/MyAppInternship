@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+
+import com.myappinternship.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

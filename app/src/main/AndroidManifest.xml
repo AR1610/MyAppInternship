@@ -15,33 +15,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppInternship">
         <activity
-            android:name=".SpinnerActivity"
+            android:name=".activity.SpinnerActivity"
             android:exported="true" />
         <activity
-            android:name=".DateTimeActivity"
+            android:name=".activity.DateTimeActivity"
             android:exported="true" />
         <activity
-            android:name=".NavHomeActivity"
+            android:name=".activity.NavHomeActivity"
             android:exported="true"
             android:label="@string/title_activity_nav_home"
             android:theme="@style/Theme.MyAppInternship.NoActionBar" />
         <activity
-            android:name=".AlertActivity"
+            android:name=".activity.AlertActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

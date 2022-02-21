@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.myappinternship.R;
 
 public class HomeActivity extends AppCompatActivity {
 

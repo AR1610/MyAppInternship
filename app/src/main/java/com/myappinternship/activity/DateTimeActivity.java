@@ -1,4 +1,4 @@
-package com.myappinternship;
+package com.myappinternship.activity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.myappinternship.R;
 
 import java.util.Calendar;
 
