@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.myappinternship.R;
+import com.myappinternship.fragments.ContactUsFragment;
 import com.myappinternship.fragments.GalleryFragment;
 import com.myappinternship.fragments.HomeFragment;
 
@@ -58,6 +59,14 @@ public class NavHomeActivity extends AppCompatActivity {
 
                     toolbar.setTitle("Gallery");
                     fragment = new GalleryFragment();
+                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.commit();
+
+                }
+                else if (id == R.id.nav_contact_us){
+
+                    toolbar.setTitle("Contact Us");
+                    fragment = new ContactUsFragment();
                     fragmentTransaction.replace(R.id.frame,fragment);
                     fragmentTransaction.commit();
 

@@ -41,6 +41,7 @@ public class BottomHomeActivity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.frame,fragment);
                     fragmentTransaction.commit();
                     toolbar.setTitle("Home");
+
                 } else if (id == R.id.profile){
 
                     toolbar.setTitle("Gallery");

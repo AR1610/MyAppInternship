@@ -9,11 +9,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_home"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_home"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppInternship">
+        <activity
+            android:name=".activity.WebviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.TabActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.BottomHomeActivity"
             android:exported="true" />

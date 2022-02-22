@@ -31,14 +31,11 @@ public class ProfileActivity extends AppCompatActivity {
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent();
                 i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(i,12);
-
             }
         });
-
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,11 +46,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 11)
+        if (requestCode == 11 && resultCode == RESULT_OK )
         {
           Uri uri = data.getData();
           circleImageView.setImageURI(uri);
