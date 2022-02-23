@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,10 +20,11 @@ import com.myappinternship.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText edtEmail;
+    EditText edtEmail,edtPassword;
     Button btnLogin, btnSend;
     ImageView imgLogo;
     TextView tvfp;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         imgLogo = findViewById(R.id.img_logo);
         btnSend = findViewById(R.id.btn_send);
         tvfp = findViewById(R.id.tv_fp);
+        edtPassword = findViewById(R.id.edt_password);
 
         tvfp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +76,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String strEmail = edtEmail.getText().toString();
+                String strPassword = edtPassword.getText().toString();
                 if (strEmail.equals("")) {
+                    edtEmail.setError("Enter Email ID");
                     Toast.makeText(MainActivity.this, "Enter Email ID ", Toast.LENGTH_SHORT).show();
+                }else if(!strEmail.matches(emailPattern)){
+                    Toast.makeText(MainActivity.this, "Enter valid EmailId ", Toast.LENGTH_SHORT).show();
+                }else if(strPassword.equals("")){
+                    Toast.makeText(MainActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
+                }else if (strPassword.length()<8){
+                    Toast.makeText(MainActivity.this, "Enter valid Password", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Email ID is  " + strEmail, Toast.LENGTH_SHORT).show();
                     imgLogo.setImageResource(R.drawable.icon_2);
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("KEY_PREF_EMAIL",strEmail);
+                    editor.putString("KEY_PREF_Password",strPassword);
+                    editor.commit();
+
                     // Explicit Intent
-                    Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                    Intent i = new Intent(MainActivity.this, NavHomeActivity.class);
                     i.putExtra("KEY_EMAIL", strEmail);
                     startActivity(i);
                     finish();

@@ -1,7 +1,11 @@
 package com.myappinternship.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -36,11 +40,20 @@ public class NavHomeActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         //setSupportActionBar(toolbar);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
+        String strEmail = sharedPreferences.getString("KEY_PREF_EMAIL", "");
+
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView tvEmail = headerView.findViewById(R.id.tv_email);
+        tvEmail.setText(strEmail);
+
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         loadDashboard();
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -49,27 +62,36 @@ public class NavHomeActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-                if (id == R.id.nav_home){
+                if (id == R.id.nav_home) {
 
                     fragment = new HomeFragment();
-                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
                     toolbar.setTitle("Home");
-                } else if (id == R.id.nav_gallery){
+                } else if (id == R.id.nav_gallery) {
 
                     toolbar.setTitle("Gallery");
                     fragment = new GalleryFragment();
-                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
 
-                }
-                else if (id == R.id.nav_contact_us){
+                } else if (id == R.id.nav_contact_us) {
 
                     toolbar.setTitle("Contact Us");
                     fragment = new ContactUsFragment();
-                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.replace(R.id.frame, fragment);
                     fragmentTransaction.commit();
 
+                }else  if(id == R.id.item_logout){
+
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.remove("KEY_PREF_EMAIL");
+                    editor.remove("KEY_PREF_Password");
+                    editor.commit();
+                    Intent i = new Intent(NavHomeActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
@@ -83,7 +105,7 @@ public class NavHomeActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         HomeFragment fragment = new HomeFragment();
-        fragmentTransaction.replace(R.id.frame,fragment);
+        fragmentTransaction.replace(R.id.frame, fragment);
         fragmentTransaction.commit();
         toolbar.setTitle("Home");
 
