@@ -1,6 +1,7 @@
 package com.myappinternship.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.myappinternship.activity.ImageSliderActivity;
 import com.myappinternship.adapters.BookAdapter;
 import com.myappinternship.R;
+import com.myappinternship.adapters.SliderAdapter;
 import com.myappinternship.models.BookModel;
+import com.myappinternship.models.SliderItem;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 
@@ -28,6 +35,15 @@ public class HomeFragment extends Fragment {
 
     ArrayList<BookModel> bookModelArrayList;
 
+    /*Slider Code*/
+    String strImag[]= {"Android","Java","PHP","C","C++"};
+
+    int imgData[] = {R.drawable.careerafter,R.drawable.ic_auto12,
+            R.drawable.ic_service3,R.drawable.subject_combination,R.drawable.teaching_reedsws};
+    private ArrayList<SliderItem> sliderItemArrayList;
+
+
+    /*over Slider Code*/
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +59,32 @@ public class HomeFragment extends Fragment {
 
         BookAdapter bookAdapter = new BookAdapter(getActivity(),bookModelArrayList);
         listView.setAdapter(bookAdapter);
+
+        /*Slider Code*/
+
+
+        SliderView sliderView = rootview.findViewById(R.id.imageSlider);
+        sliderItemArrayList = new ArrayList<SliderItem>();
+        for (int i = 0; strImag.length > i; i++) {
+            SliderItem sliderItem = new SliderItem(strImag[i], imgData[i]);
+            sliderItemArrayList.add(sliderItem);
+        }
+
+        SliderAdapter adapter = new SliderAdapter(getActivity(),sliderItemArrayList);
+
+        sliderView.setSliderAdapter(adapter);
+
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.setScrollTimeInSec(4); //set scroll delay in seconds :
+        sliderView.startAutoCycle();
+
+
+        /*over Slider Code*/
+
 
 
         return rootview;
