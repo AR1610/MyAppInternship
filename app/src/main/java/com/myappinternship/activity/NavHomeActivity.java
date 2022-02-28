@@ -43,7 +43,6 @@ public class NavHomeActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
         String strEmail = sharedPreferences.getString("KEY_PREF_EMAIL", "");
 
-
         View headerView = navigationView.getHeaderView(0);
         TextView tvEmail = headerView.findViewById(R.id.tv_email);
         tvEmail.setText(strEmail);

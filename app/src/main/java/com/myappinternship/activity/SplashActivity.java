@@ -29,7 +29,11 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void run() {
 
-        if (strEmail.equals("")){
+            Intent intent = new Intent(SplashActivity.this,CatActivity.class);
+            startActivity(intent);
+            finish();
+
+     /*   if (strEmail.equals("")){
             Intent i = new Intent(SplashActivity.this,MainActivity.class);
             startActivity(i);
             finish();
@@ -39,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(i);
             finish();
 
-        }
+        }*/
                     }
     },time);
     }

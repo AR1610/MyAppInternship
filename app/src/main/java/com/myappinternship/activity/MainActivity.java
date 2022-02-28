@@ -16,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.myappinternship.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText edtEmail,edtPassword;
+    EditText edtEmail, edtPassword;
     Button btnLogin, btnSend;
     ImageView imgLogo;
     TextView tvfp;
@@ -80,20 +82,20 @@ public class MainActivity extends AppCompatActivity {
                 if (strEmail.equals("")) {
                     edtEmail.setError("Enter Email ID");
                     Toast.makeText(MainActivity.this, "Enter Email ID ", Toast.LENGTH_SHORT).show();
-                }else if(!strEmail.matches(emailPattern)){
+                } else if (!strEmail.matches(emailPattern)) {
                     Toast.makeText(MainActivity.this, "Enter valid EmailId ", Toast.LENGTH_SHORT).show();
-                }else if(strPassword.equals("")){
+                } else if (strPassword.equals("")) {
                     Toast.makeText(MainActivity.this, "Enter Password", Toast.LENGTH_SHORT).show();
-                }else if (strPassword.length()<8){
+                } else if (strPassword.length() < 8) {
                     Toast.makeText(MainActivity.this, "Enter valid Password", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Email ID is  " + strEmail, Toast.LENGTH_SHORT).show();
                     imgLogo.setImageResource(R.drawable.icon_2);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship",MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("KEY_PREF_EMAIL",strEmail);
-                    editor.putString("KEY_PREF_Password",strPassword);
+                    editor.putString("KEY_PREF_EMAIL", strEmail);
+                    editor.putString("KEY_PREF_Password", strPassword);
                     editor.commit();
 
                     // Explicit Intent

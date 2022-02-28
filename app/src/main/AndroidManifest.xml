@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAppInternship">
         <activity
+            android:name=".activity.CatActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ImageSliderActivity"
             android:exported="true" />
         <activity
