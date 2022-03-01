@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
     android:orientation="vertical"
-    android:padding="30dp"
-    android:background="@drawable/bg">
+    android:padding="30dp">
 
-        <EditText
-            android:id="@+id/edt_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edt_bg"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
-            android:drawablePadding="20dp"
-            android:hint="Category Name"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:singleLine="true"
-            android:textColor="#05514A"
-            android:textColorHint="#05514A" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_dp"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_home"
+        app:civ_border_width="1dp"
+        app:civ_border_color="#fff"
+        app:civ_circle_background_color="#000"
+        android:layout_margin="30dp"/>
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edt_bg"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="20dp"
+        android:hint="Category Name"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:singleLine="true"
+        android:textColor="#05514A"
+        android:textColorHint="#05514A" />
 
 
     <EditText
@@ -42,27 +53,27 @@
         android:textColorHint="#05514A" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_login"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="Add" />
 
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:text="Add" />
-
-            <Button
-                android:id="@+id/btn_display"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Display" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Display" />
+    </LinearLayout>
 
 </LinearLayout>

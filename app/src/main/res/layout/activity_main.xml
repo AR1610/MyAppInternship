@@ -14,17 +14,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_home" />
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/tv_login"
-    android:text="Login"
-    android:layout_marginTop="20dp"
-    android:textStyle="bold"
-    android:layout_below="@+id/img_logo"
-    android:layout_centerHorizontal="true"
-    android:textColor="#fff"
-    android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Login"
+        android:fontFamily="casual"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
