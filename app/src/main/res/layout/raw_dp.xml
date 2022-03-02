@@ -15,7 +15,6 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-
         <ImageView
             android:id="@+id/img_gallery"
             android:layout_width="90dp"
@@ -29,7 +28,7 @@
             android:layout_marginTop="20dp"
             android:text="Gallery"
             android:textColor="#fff"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
 
     </LinearLayout>
@@ -56,7 +55,7 @@
             android:layout_marginTop="20dp"
             android:text="camera"
             android:textColor="#fff"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
 
     </LinearLayout>

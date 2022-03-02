@@ -42,7 +42,7 @@ public class CatActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     EditText edtCatName, edtCatDes;
-    Button btnAdd;
+    Button btnAdd,btnDisplay;
     CircleImageView circleImageView;
 
     FirebaseStorage firebaseStorage;
@@ -59,6 +59,15 @@ public class CatActivity extends AppCompatActivity {
 
         firebaseStorage = FirebaseStorage.getInstance();
         circleImageView = findViewById(R.id.img_dp);
+        btnDisplay = findViewById(R.id.btn_display);
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(CatActivity.this,CatDisplayActivity.class);
+                startActivity(i);
+            }
+        });
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

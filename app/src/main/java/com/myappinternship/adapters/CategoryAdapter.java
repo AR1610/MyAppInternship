@@ -5,36 +5,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.myappinternship.R;
-import com.myappinternship.fragments.HomeFragment;
 import com.myappinternship.models.BookModel;
+import com.myappinternship.models.CategoryModel;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BookAdapter extends BaseAdapter {
+public class CategoryAdapter extends BaseAdapter {
     Context context;
-    ArrayList<BookModel> bookModelArrayList;
+    ArrayList<CategoryModel> categoryModelArrayList;
 
-    public BookAdapter(Context context, ArrayList<BookModel> bookModelArrayList) {
+    public CategoryAdapter(Context context, ArrayList<CategoryModel> categoryModelArrayList) {
 
         this.context = context;
-        this.bookModelArrayList = bookModelArrayList;
+        this.categoryModelArrayList = categoryModelArrayList;
 
     }
 
     @Override
     public int getCount() {
-        return bookModelArrayList.size();
+        return categoryModelArrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return bookModelArrayList.get(position);
+        return categoryModelArrayList.get(position);
     }
 
     @Override
@@ -48,10 +48,11 @@ public class BookAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.raw_list, null);
 
         CircleImageView imgBook = convertView.findViewById(R.id.img_book);
-        //  Glide.with(this).load("http://goo.gl/gEgYUd").into(imageView);
+        String url = categoryModelArrayList.get(position).getCat_url();
+         Glide.with(context).load(url).into(imgBook);
         TextView tvBook = convertView.findViewById(R.id.tv_book);
-        imgBook.setImageResource(bookModelArrayList.get(position).getImgBook());
-        tvBook.setText(bookModelArrayList.get(position).getStrBook());
+        //imgBook.setImageResource(categoryModelArrayList.get(position).getImgBook());
+        tvBook.setText(categoryModelArrayList.get(position).getCat_name());
 
 
         return convertView;
