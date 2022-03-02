@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,8 @@ public class CatActivity extends AppCompatActivity {
     CircleImageView circleImageView;
 
     FirebaseStorage firebaseStorage;
+    private String imageUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +111,7 @@ public class CatActivity extends AppCompatActivity {
                 categoryModel.setCat_id(strid);
                 categoryModel.setCat_name(strCatName);
                 categoryModel.setCat_description(strCatDesc);
+                categoryModel.setCat_url(imageUrl);
                 databaseReference.child(strid).setValue(categoryModel);
                 edtCatName.setText("");
                 edtCatDes.setText("");
@@ -142,8 +146,8 @@ public class CatActivity extends AppCompatActivity {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading");
             progressDialog.show();
-            StorageReference riversRef = firebaseStorage.getReference().child("images/"+ UUID.randomUUID().toString()+".png");
-            riversRef.putFile(uri)
+            StorageReference storageReference = firebaseStorage.getReference().child("images/"+ UUID.randomUUID().toString()+".png");
+            storageReference.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -153,6 +157,19 @@ public class CatActivity extends AppCompatActivity {
 
                             //and displaying a success toast
                             Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
+
+                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri downloadUri) {
+
+                                     imageUrl = downloadUri.toString();
+                                    Log.e("TAG", "onSuccess: "+imageUrl );
+
+                                }
+                            });
+
+
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

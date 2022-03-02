@@ -2,7 +2,7 @@ package com.myappinternship.models;
 
 public class CategoryModel {
 
-    String cat_id,cat_name,cat_description;
+    String cat_id,cat_name,cat_description,cat_url;
 
     public String getCat_id() {
         return cat_id;
@@ -26,5 +26,13 @@ public class CategoryModel {
 
     public void setCat_description(String cat_description) {
         this.cat_description = cat_description;
+    }
+
+    public String getCat_url() {
+        return cat_url;
+    }
+
+    public void setCat_url(String cat_url) {
+        this.cat_url = cat_url;
     }
 }
