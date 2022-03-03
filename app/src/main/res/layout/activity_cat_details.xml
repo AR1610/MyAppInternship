@@ -60,19 +60,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="Add" />
+            android:text="Update" />
 
         <Button
-            android:id="@+id/btn_display"
+            android:id="@+id/btn_delete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Display" />
+            android:text="Delete" />
     </LinearLayout>
 
 </LinearLayout>
