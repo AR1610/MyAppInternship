@@ -8,17 +8,6 @@
     android:orientation="vertical"
     android:padding="30dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_dp"
-        android:layout_width="98dp"
-        android:layout_height="98dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_home"
-        app:civ_border_width="1dp"
-        app:civ_border_color="#fff"
-        app:civ_circle_background_color="#000"
-        android:layout_margin="30dp"/>
-
     <EditText
         android:id="@+id/edt_name"
         android:layout_width="match_parent"
@@ -26,7 +15,7 @@
         android:background="@drawable/edt_bg"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="20dp"
-        android:hint="Category Name"
+        android:hint="SubCategory Name"
         android:inputType="textEmailAddress"
         android:padding="15dp"
         android:singleLine="true"
@@ -43,7 +32,7 @@
         android:background="@drawable/edt_bg"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
-        android:hint="Category Description"
+        android:hint="SubCategory Description"
         android:imeOptions="actionDone"
         android:maxHeight="30dp"
         android:maxLines="5"
@@ -74,9 +63,5 @@
             android:layout_weight="1"
             android:text="Display" />
     </LinearLayout>
-    <Button
-        android:id="@+id/btn_subCat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="SubCat" />
+
 </LinearLayout>

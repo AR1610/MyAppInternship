@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class CatActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     EditText edtCatName, edtCatDes;
-    Button btnAdd,btnDisplay;
+    Button btnAdd,btnDisplay,btnSubCat;
     CircleImageView circleImageView;
 
     FirebaseStorage firebaseStorage;
@@ -60,6 +61,19 @@ public class CatActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
         circleImageView = findViewById(R.id.img_dp);
         btnDisplay = findViewById(R.id.btn_display);
+        btnSubCat = findViewById(R.id.btn_subCat);
+
+        btnSubCat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(CatActivity.this,SubCatActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
         btnDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +139,10 @@ public class CatActivity extends AppCompatActivity {
                 edtCatName.setText("");
                 edtCatDes.setText("");
 
+                SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("KEY_PREF_CATID",strid);
+                editor.commit();
             }
         });
 
