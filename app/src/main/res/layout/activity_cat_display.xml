@@ -7,7 +7,10 @@
     android:orientation="vertical">
 
 
-
+<!--<SearchView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/searchView"/>-->
 
     <ListView
         android:layout_width="match_parent"

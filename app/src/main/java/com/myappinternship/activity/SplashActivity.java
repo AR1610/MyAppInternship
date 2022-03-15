@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.myappinternship.BottomTabActivity;
+import com.myappinternship.MaterialLoginActivity;
 import com.myappinternship.utils.GifImageView;
 import com.myappinternship.R;
 
@@ -29,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         public void run() {
 
-            Intent intent = new Intent(SplashActivity.this,CatActivity.class);
+            Intent intent = new Intent(SplashActivity.this, CatActivity.class);
             startActivity(intent);
             finish();
 

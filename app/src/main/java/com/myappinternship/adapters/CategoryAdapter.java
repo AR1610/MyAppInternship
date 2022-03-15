@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -15,12 +17,16 @@ import com.myappinternship.models.BookModel;
 import com.myappinternship.models.CategoryModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CategoryAdapter extends BaseAdapter {
+public class CategoryAdapter extends BaseAdapter implements Filterable{
     Context context;
     ArrayList<CategoryModel> categoryModelArrayList;
+    ArrayList<CategoryModel> categoryModelArrayListFiltered;;
+
+
 
     public CategoryAdapter(Context context, ArrayList<CategoryModel> categoryModelArrayList) {
 
@@ -71,9 +77,41 @@ public class CategoryAdapter extends BaseAdapter {
                 context.startActivity(i);
             }
         });
-
-
-
         return convertView;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    categoryModelArrayListFiltered = categoryModelArrayList;
+                } else {
+                    ArrayList<CategoryModel> filteredList = new ArrayList<>();
+                    for (CategoryModel row : categoryModelArrayList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getCat_name().toLowerCase().contains(charString.toLowerCase()) || row.getCat_description().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    categoryModelArrayListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = categoryModelArrayListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                categoryModelArrayListFiltered = (ArrayList<CategoryModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

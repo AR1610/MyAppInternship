@@ -11,6 +11,7 @@
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/drawable/side_nav_bar.xml" value="0.17357859531772576" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_alert.xml" value="0.16486486486486487" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_bottom_home.xml" value="0.16486486486486487" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_bottom_tab.xml" value="0.14560810810810812" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_cat.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_cat_details.xml" value="0.1287162162162162" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_cat_display.xml" value="0.1" />
@@ -19,6 +20,7 @@
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_image_slider.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_material_login.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_nav_home.xml" value="0.16486486486486487" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_profile.xml" value="0.17890625" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/activity_spinner.xml" value="0.15304054054054053" />
@@ -40,6 +42,7 @@
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/layout/toolbar.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/menu/activity_main_drawer.xml" value="0.16486486486486487" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/menu/bottom_menu.xml" value="0.16486486486486487" />
+        <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/menu/search_menu.xml" value="0.15472972972972973" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14027777777777778" />
         <entry key="..\:/New Projects All/MyAppInternship/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.17357859531772576" />
       </map>
