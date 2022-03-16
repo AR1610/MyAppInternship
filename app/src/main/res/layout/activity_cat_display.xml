@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false">
 
-<!--<SearchView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/searchView"/>-->
+        <requestFocus />
+    </SearchView>
+
 
     <ListView
         android:layout_width="match_parent"

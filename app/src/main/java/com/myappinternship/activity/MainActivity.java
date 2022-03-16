@@ -1,5 +1,6 @@
 package com.myappinternship.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,8 +17,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.myappinternship.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgLogo;
     TextView tvfp;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btn_send);
         tvfp = findViewById(R.id.tv_fp);
         edtPassword = findViewById(R.id.edt_password);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://myappinternship-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        databaseReference = firebaseDatabase.getReference("Register");
+
 
         tvfp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,18 +108,41 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Email ID is  " + strEmail, Toast.LENGTH_SHORT).show();
                     imgLogo.setImageResource(R.drawable.icon_2);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("KEY_PREF_EMAIL", strEmail);
-                    editor.putString("KEY_PREF_Password", strPassword);
-                    editor.commit();
+                    firebaseAuth.signInWithEmailAndPassword(strEmail,strPassword).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    // Explicit Intent
-                    Intent i = new Intent(MainActivity.this, NavHomeActivity.class);
-                    i.putExtra("KEY_EMAIL", strEmail);
-                    startActivity(i);
-                    finish();
-                    // Over Explicit Intent
+                            if (task.isSuccessful()){
+
+                                String strUID = firebaseAuth.getUid();
+
+                                databaseReference.child(strUID).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                        RegisterModel registerModel = dataSnapshot.getValue(RegisterModel.class);
+                                        String loginEmail = registerModel.getUser_email();
+
+                                        SharedPreferences sharedPreferences = getSharedPreferences("MyAPP_Internship", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("KEY_PREF_EMAIL", loginEmail);
+                                        editor.commit();
+
+                                        // Explicit Intent
+                                        Intent i = new Intent(MainActivity.this, NavHomeActivity.class);
+                                        i.putExtra("KEY_EMAIL", loginEmail);
+                                        startActivity(i);
+                                        finish();
+                                        // Over Explicit Intent
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                            }
+                        }
+                    });
                 }
             }
         });

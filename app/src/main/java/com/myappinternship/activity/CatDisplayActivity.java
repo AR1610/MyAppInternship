@@ -29,14 +29,14 @@ import com.myappinternship.models.SliderItem;
 
 import java.util.ArrayList;
 
-public class CatDisplayActivity extends AppCompatActivity  {
+public class CatDisplayActivity extends AppCompatActivity
+        implements SearchView.OnQueryTextListener  {
 
     private ListView listView;
     private ArrayList<CategoryModel> categoryModelArrayList;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     CategoryAdapter bookAdapter;
-
     SearchView searchView;
 
     @Override
@@ -45,7 +45,8 @@ public class CatDisplayActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_cat_display);
 
         listView = findViewById(R.id.list_view);
-       // searchView = findViewById(R.id.searchView);
+        searchView = (SearchView) findViewById(R.id.search);
+        searchView.setOnQueryTextListener(this);
 
         categoryModelArrayList = new ArrayList<CategoryModel>();
         firebaseDatabase = FirebaseDatabase.getInstance("https://myappinternship-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -73,82 +74,17 @@ public class CatDisplayActivity extends AppCompatActivity  {
         });
 
     }
-
-
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search_menu, menu);
+    public boolean onQueryTextSubmit(String query) {
 
-        // Associate searchable configuration with the SearchView
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.action_search)
-                .getActionView();
-        searchView.setSearchableInfo(searchManager
-                .getSearchableInfo(getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-
-        // listening to search query text change
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // filter recycler view when query submitted
-                bookAdapter.getFilter().filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String query) {
-                // filter recycler view when text is changed
-                bookAdapter.getFilter().filter(query);
-                return false;
-            }
-        });
-        return true;
+        return false;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_search) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        bookAdapter.filter(text);
+        return false;
     }
 
-
-
-
-
-
-
-
-
-/*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_menu, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                bookAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        return true;
-    }*/
 }

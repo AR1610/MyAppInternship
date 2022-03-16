@@ -18,20 +18,21 @@ import com.myappinternship.models.CategoryModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CategoryAdapter extends BaseAdapter implements Filterable{
+public class CategoryAdapter extends BaseAdapter{
     Context context;
     ArrayList<CategoryModel> categoryModelArrayList;
-    ArrayList<CategoryModel> categoryModelArrayListFiltered;;
-
-
+    ArrayList<CategoryModel> categoryModelArrayListFiltered;
 
     public CategoryAdapter(Context context, ArrayList<CategoryModel> categoryModelArrayList) {
 
         this.context = context;
         this.categoryModelArrayList = categoryModelArrayList;
+        this.categoryModelArrayListFiltered = new ArrayList<CategoryModel>();
+        this.categoryModelArrayListFiltered.addAll(categoryModelArrayList);
 
     }
 
@@ -79,39 +80,19 @@ public class CategoryAdapter extends BaseAdapter implements Filterable{
         });
         return convertView;
     }
-
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-                String charString = charSequence.toString();
-                if (charString.isEmpty()) {
-                    categoryModelArrayListFiltered = categoryModelArrayList;
-                } else {
-                    ArrayList<CategoryModel> filteredList = new ArrayList<>();
-                    for (CategoryModel row : categoryModelArrayList) {
-
-                        // name match condition. this might differ depending on your requirement
-                        // here we are looking for name or phone number match
-                        if (row.getCat_name().toLowerCase().contains(charString.toLowerCase()) || row.getCat_description().contains(charSequence)) {
-                            filteredList.add(row);
-                        }
-                    }
-
-                    categoryModelArrayListFiltered = filteredList;
+    // Filter Class
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        categoryModelArrayList.clear();
+        if (charText.length() == 0) {
+            categoryModelArrayList.addAll(categoryModelArrayListFiltered);
+        } else {
+            for (CategoryModel wp : categoryModelArrayListFiltered) {
+                if (wp.getCat_name().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    categoryModelArrayList.add(wp);
                 }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = categoryModelArrayListFiltered;
-                return filterResults;
             }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                categoryModelArrayListFiltered = (ArrayList<CategoryModel>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
+        }
+        notifyDataSetChanged();
     }
 }
